@@ -1,0 +1,94 @@
+test plan:
+1. Ordinary test:
+Open the server port on 9998
+
+Open the client on the same computer by ./DUMBserve 127.0.0.1 9998.
+
+Use another computer. Open the client by ./DUMBserver <server ip> 9998.
+
+Make all possible modifications.
+
+Make some error operations.
+
+test cases:
+There are so many cases(including error operations), so we can only test all the normal functions and some kinds of errors.
+
+first run ./DUMBserve 9998 on a computer with an IP of <128.6.13.187>
+then run the client another computer. 
+client:
+$ ./DUMBclient 128.6.13.187 9998	(the ip of server, which is one of the iLabs)
+Connecting (1/3)...
+HELLO DUMBv0 ready!
+Enter your commands below.
+> createEFF
+That is not a command, for a command list enter 'help'.
+> create
+Okay, give the name of the message box to be created.
+create:> one
+ERROR: message box name must be between 5-25 characters.
+> create
+Okay, give the name of the message box to be created.
+create:> testbox
+Success! Message box is created.
+> open
+Okay, give the name of the message box to be opened.
+open:> testboxx
+ERROR: message box does not exist.
+> testbox
+That is not a command, for a command list enter 'help'.
+> open
+Okay, give the name of the message box you want to open
+open:> testbox
+Success! Message box is opened.
+> put testmessage1
+That is not a command, for a command list enter 'help'.
+> put
+Okay, enter the message to be sent.
+put:> testmessage1
+Success! Message is sent.
+> put
+Okay, enter the message to be sent.
+put:> testmessage2
+Success! Message is sent.
+> put
+Okay, enter the message to be sent.
+put:> testmessage3
+Success! Message is sent.
+> next
+testmessage1
+> next
+testmessage2
+> next
+testmessage3
+> next
+ERROR: message box is empty.
+> close
+Okay, give the name of the message box to be closed.
+close:> testbox
+Success! Message box is closed.
+> delete
+Okay, give the name of the message box to be deleted.
+delete:> testbox
+Success! Message box is deleted.
+> quit
+Disconnected successfully. Goodbye!
+
+server:
+Wed Dec 11 18:15:48 2019 128.6.4.102 connected
+Wed Dec 11 18:15:48 2019 128.6.4.102 HELLO
+Wed Dec 11 18:21:59 2019 128.6.4.102 CREAT
+Wed Dec 11 18:22:16 2019 128.6.4.102 OPNBX
+Wed Dec 11 18:22:16 2019 128.6.4.102 ER:NEXST
+Wed Dec 11 18:23:04 2019 128.6.4.102 OPNBX
+Wed Dec 11 18:23:31 2019 128.6.4.102 PUTMG
+Wed Dec 11 18:23:37 2019 128.6.4.102 PUTMG
+Wed Dec 11 18:23:43 2019 128.6.4.102 PUTMG
+Wed Dec 11 18:23:49 2019 128.6.4.102 NXTMG
+Wed Dec 11 18:23:52 2019 128.6.4.102 NXTMG
+Wed Dec 11 18:23:53 2019 128.6.4.102 NXTMG
+Wed Dec 11 18:23:54 2019 128.6.4.102 NXTMG
+Wed Dec 11 18:23:54 2019 128.6.4.102 ER:EMPTY
+Wed Dec 11 18:24:05 2019 128.6.4.102 CLSBX
+Wed Dec 11 18:24:32 2019 128.6.4.102 DELBX
+Wed Dec 11 18:24:36 2019 128.6.4.102 GDBYE
+Wed Dec 11 18:24:36 2019 128.6.4.102 disconnected
